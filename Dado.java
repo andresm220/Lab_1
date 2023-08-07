@@ -3,7 +3,7 @@ import java.util.Random;
 public class Dado {
     //Declaramos variables 
     Random random = new Random();
-    int valor;
+    private int valor;
     
     //Valor es un numero random entre 1 y 6 
     public void setValor(){

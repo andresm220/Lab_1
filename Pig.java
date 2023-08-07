@@ -1,4 +1,3 @@
-//Programación Orientada a Objetos
 //Laboratioro1 
 //Andrés Mazariegos 21749
 import java.util.Scanner;
@@ -21,15 +20,14 @@ public class Pig {
         int ronda_2do_jugador;
         int puntos_acumulados;
         int puntos_acumulados_2do_jugador;
-        int contador;
-        int contador2;
-
+        int contador=0;
+        int contador2= 0;
       
        
         //Ciclo principal que continuara hasta que uno de los dos jugadores tenga 100 puntos generales 
         while (jugador1.getPuntuacion()< 100 && jugador2.getPuntuacion()<100){
             //Pedimos al usuario que elija que jugador va a tirar 
-            System.out.println("TIRA");
+            System.out.println("TIRA (RESPETA LOS TURNOS)");
             int opcion= scanner.nextInt();
             //Si elije 1 tira el jugador 1 
             if(opcion==1){
@@ -44,27 +42,27 @@ public class Pig {
                 //Condicionales para que si uno de los dos valores es 1 no se sume puntaje ni a la ronda ni al puntaje total 
                 if(valor== 1){
                 //Llamamos los metodos necesarios de la clase Jugador 
-                jugador1.setresetear_jugador();
+                jugador1.SetResetearJugador();
                 jugador1.setRonda(0+0);
-                jugador1.ResetearContador();
-                puntos_acumulados= jugador1.getresetear_jugador();
+                contador=0;
+                puntos_acumulados= jugador1.GetResetearJugador();
                 System.out.println("Primer dado: " + valor);
                 System.out.println("Segundo dado:" + valor2);
                 System.out.println("Sacaste un 1  tu puntuacion de ronda es " + puntos_acumulados + " y tu puntuacion general es "+ puntos_acumulados);
-                System.out.println("Puedes seguir tirando");
+                System.out.println("Turno del JUGADOR 2, presiona 2 ");;
                 
 
                 }
                 else if (valor2==1){
                     //Llamamos los metodos necesarios de la clase Jugador 
-                    jugador1.setresetear_jugador();
+                    jugador1.SetResetearJugador();
                     jugador1.setRonda(0);
-                    jugador1.ResetearContador();;
-                    puntos_acumulados= jugador1.getresetear_jugador();
+                    contador=0;
+                    puntos_acumulados= jugador1.GetResetearJugador();
                     System.out.println("Primer dado: " + valor);
                     System.out.println("Segundo dado:" + valor2);
                     System.out.println("Sacaste un 1  tu puntuacion de ronda es " + puntos_acumulados + " y tu puntuacion general es "+  puntos_acumulados);
-                    System.out.println("Puedes seguir tirando");
+                    System.out.println("Turno del JUGADOR 2, presiona 2 ");
                 
 
 
@@ -79,20 +77,19 @@ public class Pig {
                     jugador1.setRonda(valor+valor2);
                     puntos_acumulados= jugador1.getRonda();
                     ronda= (valor + valor2);
-                    jugador1.setContador();
-                    contador= jugador1.getContador();
+                    contador= contador + ronda;
                     jugador1.setPuntuacion(ronda);
-                    int puntuacion_total = jugador1.getresetear_jugador();
+                    int puntuacion_total = jugador1.GetResetearJugador();
                     System.out.println("Tus puntos de esta ronda son " + ronda + " y tu puntuacion general es "+ puntos_acumulados);
                     //Condicional para que cuando el puntaje de una ronda sea 20 o más se avise en pantalla que es el turno del otro jugador 
                 
                         if (contador>=20){
-                        System.out.println("HAS EXCEDIDO LOS PUNTOS POR RONDA TURNO DEL JUGADOR 2, PRESIONA 2 ");
-                        jugador1.ResetearContador();;
-                        opcion=2;
-                        }
-                        else{
-                            System.out.println("Puedes seguir tirando");
+                            contador=0;
+                            System.out.println("HAS EXCEDIDO LOS PUNTOS SEGUIDOS PERMITIDOS(20) TURNO DEL JUGADOR 2, PRESIONA 2 ");
+                        
+                
+                        }else{
+                            System.out.println("Puedes seguir tirando o ceder el turno ");
                 
                         }
                         //Llamamos al metodo necesario de la clase jugador si el jugador obtiene 100 puntos o más 
@@ -117,24 +114,26 @@ public class Pig {
                 int valor= dado1.getValor();
                 int valor2 =dado2.getValor();
                 if(valor== 1){
-                jugador2.setresetear_jugador();
-                jugador2.setRonda(0+0);
-                jugador2.ResetearContador();
-                puntos_acumulados_2do_jugador= jugador2.getresetear_jugador();
-                System.out.println("Primer dado: " + valor);
-                System.out.println("Segundo dado:" + valor2);
-                System.out.println("Sacaste un 1  tu puntuacion de ronda es " + puntos_acumulados_2do_jugador + " y tu puntuacion general es " + puntos_acumulados_2do_jugador);
+                    jugador2.SetResetearJugador();
+                    jugador2.setRonda(0+0);
+                    contador2=0;
+                    puntos_acumulados_2do_jugador= jugador2.GetResetearJugador();
+                    System.out.println("Primer dado: " + valor);
+                    System.out.println("Segundo dado:" + valor2);
+                    System.out.println("Sacaste un 1  tu puntuacion de ronda es " + puntos_acumulados_2do_jugador + " y tu puntuacion general es " + puntos_acumulados_2do_jugador);
+                    System.out.println("Turno del JUGADOR 1, presiona 1 ");;
                 
 
                 }
                 else if (valor2==1){
-                    jugador2.setresetear_jugador();
+                    jugador2.SetResetearJugador();
                     jugador2.setRonda(0);
-                    jugador2.ResetearContador();
-                    puntos_acumulados_2do_jugador= jugador2.getresetear_jugador();
+                    contador2=0;
+                    puntos_acumulados_2do_jugador= jugador2.GetResetearJugador();
                     System.out.println("Primer dado: " + valor);
                     System.out.println("Segundo dado:" + valor2);
                     System.out.println("Sacaste un 1  tu puntuacion de ronda es " + puntos_acumulados_2do_jugador + " y tu puntuacion general es "+  puntos_acumulados_2do_jugador);
+                    System.out.println("Turno del JUGADOR 1, presiona 1 ");
 
 
 
@@ -145,14 +144,19 @@ public class Pig {
                     jugador2.setRonda(valor+valor2);
                     puntos_acumulados_2do_jugador= jugador2.getRonda();
                     ronda_2do_jugador= (valor+valor2);
-                    jugador2.setContador();
-                    contador2= jugador2.getContador();
+                    contador2= contador2 + ronda_2do_jugador;
                     jugador2.setPuntuacion(ronda_2do_jugador);
-                    int puntuacion_total = jugador2.getresetear_jugador();
+                    int puntuacion_total = jugador2.GetResetearJugador();
                     System.out.println("Tus puntos de esta ronda son " + ronda_2do_jugador + " y tu puntuacion general es "+ puntos_acumulados_2do_jugador);
+                    
                         if (contador2>=20){
-                            System.out.println("HAS EXCEDIDO LOS PUNTOS POR RONDA; TURNO DEL JUGADOR 1, PRESIONA 1");
-                            jugador2.ResetearContador();
+                            
+                           contador2=0;
+                            System.out.println("HAS EXCEDIDO LOS PUNTOS SEGUIDOS PERMITIDOS (20); TURNO DEL JUGADOR 1, PRESIONA 1");
+                            
+                            }
+                            else {
+                            System.out.println("Puedes seguir tirando o ceder ");
                             }
                         if (puntos_acumulados_2do_jugador >= 100){
                             jugador2.felicitar("JUGADOR 2");
@@ -177,8 +181,3 @@ public class Pig {
 
     }
 }
-
-
-
-        
-        
