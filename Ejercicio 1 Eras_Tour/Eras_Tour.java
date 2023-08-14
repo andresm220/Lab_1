@@ -1,4 +1,5 @@
 
+
 import java.util.Scanner;
 import java.util.Random;
 /**
@@ -10,7 +11,7 @@ import java.util.Random;
 public class Eras_Tour {
     public static void main(String[] args){
         Random random;
-        Boolean seguir= true;
+        boolean seguir= true;
         Scanner scanner= new Scanner(System.in);
         Localidad choice,localidad1,localidad2,localidad3;
         localidad1= new Localidad();
@@ -23,7 +24,7 @@ public class Eras_Tour {
         Ticket ticket;
         ticket= new Ticket();
 //Ciclo principal del programa
-        while(seguir==true){
+        while(seguir){
             //menu
             System.out.println("Bienvenido a la venta de entradas para el Eras Tour, elige lo que quieres hacer:");
             System.out.println("1. Ingresar mis datos");
@@ -46,7 +47,7 @@ public class Eras_Tour {
                 System.out.println("Ingresa tu presupuesto: ");
                 int dinero = scanner.nextInt();
                 comprador.setDatos(nombre,email,boletos,dinero);
-                seguir=true;            
+                //seguir=true;            
             }
             //Consultar disponibilidad total 
             else if(opcion==3){
@@ -102,10 +103,10 @@ public class Eras_Tour {
                 int rango2= ticket.getRango_final();
                 System.out.println("Para ser apto debe estar entre " + rango1 + " y " + rango2);
                 System.out.println("Tu ticket " + numero );
-                int algo= random.nextInt(3-1+1)+1;
                 //si si es apto pasa todo esto 
                 if( rango1<rango2 ){
-                 if (numero>=rango1 && numero<= rango2){;
+                    int algo= random.nextInt(2)+1;
+                    if (numero>=rango1 && numero<= rango2){;
                         if(algo==1){
                             localidad1.setPrecio(100);
                             System.out.println("Fuiste asignado a la Localidad 1 (100 dolares por boleto)");
@@ -220,7 +221,6 @@ public class Eras_Tour {
                         }
                     }else{
                         System.out.println("Lo sentimos tu ticket no es apto");
-                        seguir=false;
                     }
                 }
             }
