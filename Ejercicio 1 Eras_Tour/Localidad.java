@@ -24,21 +24,15 @@ public class Localidad {
         return this.precio;
     }
     //metodo para llevar la cuenta del subtotal de cada localidad
-    public void setSubtotal(int cantidad, int precio_c){
-        this.subtotal= this.subtotal + (cantidad*precio);
+    public void setSubtotal( int v1, int a){
+        this.subtotal= (20-v1)*a;
     }
     //devuelve el subtotal de la localidad en ese momento 
     public int getSubtotal(){
         return this.subtotal;
     }
     //Esto esta agregado porque prefiero hacer con un metodo para elegir la localidad de modo random que hacerlo en el main 
-    public void setLocalidad(){
-        this.asignar=this.random.nextInt(3)+1;
-    }
-    public int getLocalidad(){
-        return this.asignar;
-    }
-
+   
 
 
 }
